@@ -1,4 +1,6 @@
 function playGame() {
+    let winnerTxt = document.querySelector(".winner");
+
     let humanScore = 0;
     let computerScore = 0;
     
@@ -71,10 +73,13 @@ function playGame() {
     // Check who has the most points at the end of the game
     if (humanScore > computerScore) {
         console.log("Human Wins!");
+        winnerTxt.textContent = "Human Wins!";
     } else if (computerScore > humanScore) {
         console.log("Computer Wins!");
+        winnerTxt.textContent = "Computer Wins!";
     } else {
-        console.log("It's a tie");
+        console.log("It's a tie!");
+        winnerTxt.textContent = "It's a tie!";
     }
 }
 
