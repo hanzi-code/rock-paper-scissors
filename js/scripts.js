@@ -27,7 +27,6 @@ function playGame() {
     function playRound(humanChoice, computerChoice) {
         // Check if the game was a tie and return no points
         if (computerChoice === humanChoice) {
-            console.log("It's a tie!");
             return {humanScore, computerScore};
         }
 
@@ -59,7 +58,7 @@ function playGame() {
     }
 
     // This repeats the game for 5 rounds
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 100; i++) {
         let computerChoice = getComputerChoice().toLowerCase();
         let humanChoice = getHumanChoice().toLowerCase();
 
@@ -67,20 +66,20 @@ function playGame() {
         humanScore = result.humanScore;
         computerScore = result.computerScore;
 
-        console.log(`Round ${i + 1}: Human ${humanScore} - Computer ${computerScore}w`);
+        console.log(`Round ${i + 1}: Human ${humanScore} - Computer ${computerScore}`);
+        
+        // Check if any of the human or machine already have 5 points and then break
+        if (humanScore === 5) {
+            console.log("Human Wins!");
+            winnerTxt.textContent = "Human Wins!";
+            break;
+        } else if (computerScore === 5) {
+            console.log("Computer Wins!");
+            winnerTxt.textContent = "Computer Wins!";
+            break;
+        }
     }
     
-    // Check who has the most points at the end of the game
-    if (humanScore > computerScore) {
-        console.log("Human Wins!");
-        winnerTxt.textContent = "Human Wins!";
-    } else if (computerScore > humanScore) {
-        console.log("Computer Wins!");
-        winnerTxt.textContent = "Computer Wins!";
-    } else {
-        console.log("It's a tie!");
-        winnerTxt.textContent = "It's a tie!";
-    }
 }
 
 playGame();
