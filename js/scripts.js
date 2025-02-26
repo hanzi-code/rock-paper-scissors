@@ -2,6 +2,7 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
     
+    // Gets the computer choice with the Math.random() func
     function getComputerChoice() {
         let choice = Math.floor(Math.random() * 3) + 1;
     
@@ -14,6 +15,7 @@ function playGame() {
         }
     }
     
+    // Gets the player choice with a prompt
     function getHumanChoice() {
         let choice = prompt("Rock, Paper, Scissors!");
     
@@ -21,11 +23,14 @@ function playGame() {
     }
 
     function playRound(humanChoice, computerChoice) {
+        // Check if the game was a tie and return no points
         if (computerChoice === humanChoice) {
             console.log("It's a tie!");
             return {humanScore, computerScore};
         }
 
+        // Check if the computer wins if so return it as a object with
+        // one more point
         if (computerChoice === "paper" && humanChoice === "rock") {
             console.log("You lose! Paper beats Rock");
             return {humanScore, computerScore: computerScore + 1};
@@ -37,6 +42,8 @@ function playGame() {
             return {humanScore, computerScore: computerScore + 1};
         }
     
+        // Check if the human wins if so return it as a object with
+        // one more point
         if (humanChoice === "paper" && computerChoice === "rock") {
             console.log("You win! Paper beats Rock");
             return {humanScore: humanScore + 1, computerScore};
@@ -49,6 +56,7 @@ function playGame() {
         }
     }
 
+    // This repeats the game for 5 rounds
     for (let i = 0; i < 5; i++) {
         let computerChoice = getComputerChoice().toLowerCase();
         let humanChoice = getHumanChoice().toLowerCase();
@@ -57,9 +65,10 @@ function playGame() {
         humanScore = result.humanScore;
         computerScore = result.computerScore;
 
-        console.log(`Round ${i + 1}: Human ${humanScore} - Computer ${computerScore}`);
+        console.log(`Round ${i + 1}: Human ${humanScore} - Computer ${computerScore}w`);
     }
     
+    // Check who has the most points at the end of the game
     if (humanScore > computerScore) {
         console.log("Human Wins!");
     } else if (computerScore > humanScore) {
