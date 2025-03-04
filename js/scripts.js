@@ -36,6 +36,7 @@ function playGame() {
                     getHumanChoice = 'scissors';
                     break;
             }
+            // Assign user choices and call the round
             let computerChoice = getComputerChoice().toLowerCase();
             let humanChoice = getHumanChoice.toLowerCase();
             let result = playRound(humanChoice, computerChoice);
